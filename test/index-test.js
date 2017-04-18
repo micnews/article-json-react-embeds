@@ -1,3 +1,4 @@
+/* @flow */
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server'; // eslint-disable-line
 import test from 'tapava';
@@ -426,6 +427,8 @@ test('render() tidal', (t) => {
 
 test('renderText()', (t) => {
   t.deepEqual(renderText(undefined), []);
-  t.deepEqual(renderText(null), []);
   t.deepEqual(renderText([]), []);
+  // Line below ignores this in flow, testing that bad input doesn't break.
+  // $FlowFixMe
+  t.deepEqual(renderText(null), []);
 });
